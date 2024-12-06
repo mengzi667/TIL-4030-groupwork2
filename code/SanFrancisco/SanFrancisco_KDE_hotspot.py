@@ -19,6 +19,9 @@ for feature in metro_data['features']:
 # Step 2: Load bike-sharing data
 file_path = 'TIL-4030-groupwork2/data/SanFrancisco/202008-baywheels-tripdata.csv' 
 
+# Load bike-sharing data into a DataFrame
+bike_data = pd.read_csv(file_path)
+
 # Filter data within the bounding box
 lng_min, lng_max = -122.5233, -122.3551
 lat_min, lat_max = 37.7083, 37.8163
@@ -83,7 +86,7 @@ for station in metro_stations:
     name = station['name']
     folium.CircleMarker(
         location=[coordinates[1], coordinates[0]],  # GeoJSON uses [lng, lat]
-        radius=4,
+        radius=3,
         color='purple',
         fill=True,
         fill_opacity=0.9,
@@ -116,7 +119,7 @@ for station in metro_stations:
     name = station['name']
     folium.CircleMarker(
         location=[coordinates[1], coordinates[0]],  # GeoJSON uses [lng, lat]
-        radius=4,
+        radius=3,
         color='purple',
         fill=True,
         fill_opacity=0.9,

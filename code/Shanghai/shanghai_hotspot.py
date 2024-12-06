@@ -64,10 +64,13 @@ HeatMap(
 for station in metro_stations:
     coordinates = station['coordinates']
     name = station['name']
-    folium.Marker(
+    folium.CircleMarker(
         location=[coordinates[1], coordinates[0]],  # GeoJSON uses [longitude, latitude]
+        radius=5,
+        color='blue',
+        fill=True,
+        fill_color='blue',
         popup=name,
-        icon=folium.Icon(color="blue", icon="train"),
     ).add_to(m_start)
 
 # Save start point heatmap
@@ -85,10 +88,13 @@ HeatMap(
 for station in metro_stations:
     coordinates = station['coordinates']
     name = station['name']
-    folium.Marker(
+    folium.CircleMarker(
         location=[coordinates[1], coordinates[0]],
+        radius=5,
+        color='blue',
+        fill=True,
+        fill_color='blue',
         popup=name,
-        icon=folium.Icon(color="blue", icon="train"),
     ).add_to(m_end)
 
 # Save end point heatmap
