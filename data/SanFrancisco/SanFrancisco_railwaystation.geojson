@@ -1,0 +1,1801 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2024-12-06T14:50:10Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/301505501",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "2nd & King",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "N;T",
+        "shelter": "yes",
+        "station": "light_rail",
+        "tram": "yes",
+        "wheelchair": "yes",
+        "wikidata": "Q4633972"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3902045,
+          37.7793466
+        ]
+      },
+      "id": "node/301505501"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/301505694",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Brannan",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "N;T",
+        "shelter": "yes",
+        "station": "light_rail",
+        "tram": "yes",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388127,
+          37.7837573
+        ]
+      },
+      "id": "node/301505694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/301505695",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Folsom",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "tram": "yes",
+        "wheelchair": "yes",
+        "wikidata": "Q5464872"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3895673,
+          37.7904517
+        ]
+      },
+      "id": "node/301505695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/324946983",
+        "alt_name": "4th & King",
+        "light_rail": "yes",
+        "name": "Caltrain",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "passenger_information_display": "yes",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "N",
+        "shelter": "yes",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.394497,
+          37.7759911
+        ]
+      },
+      "id": "node/324946983"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/324946989",
+        "light_rail": "yes",
+        "name": "4th & King",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "passenger_information_display": "yes",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "T",
+        "shelter": "yes",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393636,
+          37.776019
+        ]
+      },
+      "id": "node/324946989"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1728589039",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Stonestown",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4749029,
+          37.7274507
+        ]
+      },
+      "id": "node/1728589039"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1728589050",
+        "light_rail": "yes",
+        "name": "S.F. State",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4752017,
+          37.7215177
+        ]
+      },
+      "id": "node/1728589050"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1996610647",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Mission Rock",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "passenger_information_display": "yes",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "T",
+        "shelter": "yes",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q6878705",
+        "wikipedia": "en:Mission Rock station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3896918,
+          37.7729321
+        ]
+      },
+      "id": "node/1996610647"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1996610650",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "23rd Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "passenger_information_display": "yes",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "T",
+        "shelter": "yes",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q4631698"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3880198,
+          37.7553756
+        ]
+      },
+      "id": "node/1996610650"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1996610655",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "UCSF/Chase Center",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "passenger_information_display": "yes",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "T",
+        "shelter": "yes",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7864123"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3892458,
+          37.7681918
+        ]
+      },
+      "id": "node/1996610655"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2150077196",
+        "alt_name": "Civic Center / UN Plaza",
+        "level": "-3",
+        "name": "Civic Center",
+        "network": "BART",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "CIVC",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/civc",
+        "wikidata": "Q5124283",
+        "wikipedia": "en:Civic Center/UN Plaza station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4139639,
+          37.7793583
+        ]
+      },
+      "id": "node/2150077196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2150077198",
+        "level": "-3",
+        "name": "Embarcadero",
+        "network": "BART",
+        "onestop_id": "s-9q8znb12j1-embarcadero",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "EMBR",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/embr",
+        "wheelchair": "yes",
+        "wikidata": "Q3866549",
+        "wikipedia": "en:Embarcadero station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3968986,
+          37.792855
+        ]
+      },
+      "id": "node/2150077198"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2150077204",
+        "level": "-3",
+        "name": "Powell Street",
+        "network": "BART",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "POWL",
+        "short_name": "Powell",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/powl",
+        "wheelchair": "yes",
+        "wikidata": "Q7236098",
+        "wikipedia": "en:Powell Street station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4071867,
+          37.7847076
+        ]
+      },
+      "id": "node/2150077204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2150077206",
+        "addr:city": "San Francisco",
+        "addr:housenumber": "2000",
+        "addr:postcode": "94110",
+        "addr:state": "CA",
+        "addr:street": "Mission Street",
+        "level": "-2",
+        "name": "16th Street Mission",
+        "network": "BART",
+        "network:wikidata": "Q610120",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "operator:wikidata": "Q4873922",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "16TH",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/16th",
+        "wheelchair": "yes",
+        "wikidata": "Q4552246",
+        "wikipedia": "en:16th Street Mission station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.419678,
+          37.7650686
+        ]
+      },
+      "id": "node/2150077206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2150077208",
+        "level": "-2",
+        "name": "24th Street Mission",
+        "network": "BART",
+        "network:wikidata": "Q610120",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "operator:wikidata": "Q4873922",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "24TH",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/24th",
+        "wheelchair": "yes",
+        "wikidata": "Q4632033",
+        "wikipedia": "en:24th Street Mission station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.418449,
+          37.7522559
+        ]
+      },
+      "id": "node/2150077208"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5015578938",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Montgomery Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Montgomery",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5411429",
+        "wikipedia": "en:Montgomery Street station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401472,
+          37.7892283
+        ]
+      },
+      "id": "node/5015578938"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5015578939",
+        "level": "-3",
+        "name": "Montgomery Street",
+        "network": "BART",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "MONT",
+        "short_name": "Montgomery",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/mont",
+        "wheelchair": "yes",
+        "wikidata": "Q5411429",
+        "wikipedia": "en:Montgomery Street station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4014677,
+          37.7892257
+        ]
+      },
+      "id": "node/5015578939"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5318541582",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Embarcadero",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q3866549",
+        "wikipedia": "en:Embarcadero station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396912,
+          37.7928637
+        ]
+      },
+      "id": "node/5318541582"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5321969155",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Castro",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5050795",
+        "wikipedia": "en:Castro station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4352931,
+          37.7626004
+        ]
+      },
+      "id": "node/5321969155"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5321969157",
+        "alt_name": "Church Street",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Church",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5116718",
+        "wikipedia": "en:Church station (Muni Metro)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4292613,
+          37.7672666
+        ]
+      },
+      "id": "node/5321969157"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5323877767",
+        "alt_name": "Civic Center / UN Plaza",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Civic Center",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5124283",
+        "wikipedia": "en:Civic Center/UN Plaza station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4139719,
+          37.7793625
+        ]
+      },
+      "id": "node/5323877767"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5323877771",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Powell Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Powell",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7236098",
+        "wikipedia": "en:Powell Street station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4071968,
+          37.7847137
+        ]
+      },
+      "id": "node/5323877771"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5323877774",
+        "level": "-2",
+        "light_rail": "yes",
+        "name": "Van Ness",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7913534",
+        "wikipedia": "en:Van Ness station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4192659,
+          37.7751897
+        ]
+      },
+      "id": "node/5323877774"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945381",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Arleta",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q4792210"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4018994,
+          37.7123703
+        ]
+      },
+      "id": "node/5326945381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945387",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Carroll",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5046620"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3942674,
+          37.7254837
+        ]
+      },
+      "id": "node/5326945387"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945388",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Evans",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wikidata": "Q5415961"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3879459,
+          37.742715
+        ]
+      },
+      "id": "node/5326945388"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945392",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Gilman/Paul",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5562459"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3956586,
+          37.7224125
+        ]
+      },
+      "id": "node/5326945392"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945393",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Hudson/Innes",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q14682405"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3888966,
+          37.7399474
+        ]
+      },
+      "id": "node/5326945393"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945394",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Kirkwood/La Salle",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q6415885"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3897643,
+          37.7375275
+        ]
+      },
+      "id": "node/5326945394"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945395",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Le Conte",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q6506780"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3978044,
+          37.718533
+        ]
+      },
+      "id": "node/5326945395"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945396",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Marin Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q14683269"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3874868,
+          37.7490293
+        ]
+      },
+      "id": "node/5326945396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945399",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Oakdale/Palou",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "trolleybus": "yes",
+        "wheelchair": "yes",
+        "wikidata": "Q7073793"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3908628,
+          37.7343961
+        ]
+      },
+      "id": "node/5326945399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945400",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Revere/Shafter",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7318092"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3916755,
+          37.7320706
+        ]
+      },
+      "id": "node/5326945400"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945401",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Sunnydale",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q14684047"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4049659,
+          37.7092072
+        ]
+      },
+      "id": "node/5326945401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945402",
+        "alt_name": "Mariposa",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "UCSF Medical Center",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q6765527"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388869,
+          37.7643313
+        ]
+      },
+      "id": "node/5326945402"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326945403",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Williams",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q8021100"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3926636,
+          37.7292511
+        ]
+      },
+      "id": "node/5326945403"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326947002",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "20th Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q4630811"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3885771,
+          37.7604997
+        ]
+      },
+      "id": "node/5326947002"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5338633619",
+        "light_rail": "yes",
+        "name": "Balboa Park",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4467134,
+          37.7208729
+        ]
+      },
+      "id": "node/5338633619"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5338635521",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "City College",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4511756,
+          37.7229972
+        ]
+      },
+      "id": "node/5338635521"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5338635523",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Junipero Serra Boulevard & Ocean Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Junipero Serra & Ocean",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4717726,
+          37.7314327
+        ]
+      },
+      "id": "node/5338635523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5338635525",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Ocean Avenue & Lee Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Lee",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7076126"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.454108,
+          37.7234456
+        ]
+      },
+      "id": "node/5338635525"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5338635634",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Saint Francis Circle",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7587942"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4713392,
+          37.7353364
+        ]
+      },
+      "id": "node/5338635634"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352315971",
+        "light_rail": "yes",
+        "name": "Church Street & 18th Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Church & 18th Street",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4283361,
+          37.7612999
+        ]
+      },
+      "id": "node/5352315971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352315976",
+        "alt_name": "24th Street & Church Street",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Church Street & 24th Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Church & 24th Street",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5116741"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4274526,
+          37.7516987
+        ]
+      },
+      "id": "node/5352315976"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352315985",
+        "alt_name": "Church Street & 29th Street",
+        "light_rail": "yes",
+        "name": "Church Street & Day Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Church & Day",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4266069,
+          37.7429019
+        ]
+      },
+      "id": "node/5352315985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352315995",
+        "light_rail": "yes",
+        "name": "San Jose Avenue & Randall Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "San Jose & Randall",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wheelchair:description": "Accessible spot to get on the MUNI J train."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4242748,
+          37.7395066
+        ]
+      },
+      "id": "node/5352315995"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352469621",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Duboce Avenue & Church Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Duboce & Church",
+        "station": "light_rail",
+        "trolleybus": "yes",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4291697,
+          37.7694503
+        ]
+      },
+      "id": "node/5352469621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5352469623",
+        "light_rail": "yes",
+        "name": "Duboce Avenue & Noe Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Duboce Park",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5311052"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4336698,
+          37.7693083
+        ]
+      },
+      "id": "node/5352469623"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5354331168",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Judah Street & 9th Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Judah & 9th Avenue",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q6302146"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.46644,
+          37.7621741
+        ]
+      },
+      "id": "node/5354331168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5363464808",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Judah Street & 28th Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "28th Avenue",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q6302133"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4866522,
+          37.7612828
+        ]
+      },
+      "id": "node/5363464808"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6133371922",
+        "addr:housenumber": "2901",
+        "addr:street": "Diamond Street",
+        "name": "Glen Park",
+        "network": "BART",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "GLEN",
+        "station": "subway",
+        "subway": "yes",
+        "website": "https://www.bart.gov/stations/glen",
+        "wheelchair": "yes",
+        "wikidata": "Q14682028",
+        "wikipedia": "en:Glen Park station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4338051,
+          37.7331037
+        ]
+      },
+      "id": "node/6133371922"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6133371923",
+        "level": "-2",
+        "name": "Balboa Park",
+        "network": "BART",
+        "operator": "San Francisco Bay Area Rapid Transit District",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "BALB",
+        "station": "subway",
+        "subway": "yes",
+        "wheelchair": "yes",
+        "wikidata": "Q3376646"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4475473,
+          37.7214274
+        ]
+      },
+      "id": "node/6133371923"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6180237575",
+        "alt_name": "Phelan Loop",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "name": "City College Terminal",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "trolleybus": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4526204,
+          37.7237743
+        ]
+      },
+      "id": "node/6180237575"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6352715491",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Judah Street & La Playa Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Ocean Beach",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.508632,
+          37.7603214
+        ]
+      },
+      "id": "node/6352715491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6352715493",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Judah Street & Sunset Boulevard",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Judah & Sunset",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.495769,
+          37.76088
+        ]
+      },
+      "id": "node/6352715493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6352715494",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Judah Street & 19th Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Judah & 19th Avenue",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.477032,
+          37.761708
+        ]
+      },
+      "id": "node/6352715494"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6352715499",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Carl Street & Cole Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Carl & Cole",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4499754,
+          37.7658084
+        ]
+      },
+      "id": "node/6352715499"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6352715502",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "UCSF Parnassus",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4583938,
+          37.7643929
+        ]
+      },
+      "id": "node/6352715502"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6353538601",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "West Portal",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q7986281",
+        "wikipedia": "en:West Portal station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4656336,
+          37.7411405
+        ]
+      },
+      "id": "node/6353538601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6356983016",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Taraval Street & 22nd Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "L",
+        "short_name": "22nd Avenue",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.479458,
+          37.7428892
+        ]
+      },
+      "id": "node/6356983016"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6356992399",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Wawona Street & 46th Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "SF Zoo",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.504565,
+          37.7361113
+        ]
+      },
+      "id": "node/6356992399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6356992405",
+        "alt_name": "Sunset Boulevard & Taraval Street",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Taraval Street & Sunset Boulevard",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Taraval & Sunset",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.494461,
+          37.7422281
+        ]
+      },
+      "id": "node/6356992405"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6358812315",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Ocean Avenue & Jules Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Jules",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q14683542"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4612321,
+          37.7249647
+        ]
+      },
+      "id": "node/6358812315"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6358814400",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Broad Street & Plymouth Avenue",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Broad & Plymouth",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4560697,
+          37.7131984
+        ]
+      },
+      "id": "node/6358814400"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6358814406",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Randolph Street & Arch Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Randolph & Arch",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.467109,
+          37.7142778
+        ]
+      },
+      "id": "node/6358814406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7207147411",
+        "light_rail": "yes",
+        "name": "Church Street & Market Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "short_name": "Market",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4288861,
+          37.767115
+        ]
+      },
+      "id": "node/7207147411"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7209008685",
+        "alt_name": "4th/Brannan;4th+Brannan",
+        "check_date": "2023-01-07",
+        "light_rail": "yes",
+        "name": "Fourth/Brannan",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Transportation Agency",
+        "passenger_information_display": "yes",
+        "public_transport": "station",
+        "railway": "station",
+        "route_ref": "T",
+        "shelter": "yes",
+        "start_date": "2022-11-19",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396989,
+          37.7786814
+        ]
+      },
+      "id": "node/7209008685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7248421841",
+        "addr:city": "San Francisco",
+        "addr:country": "US",
+        "addr:housenumber": "380",
+        "addr:postcode": "94116",
+        "addr:state": "CA",
+        "addr:street": "Laguna Honda Boulevard",
+        "amenity": "bus_station",
+        "bus": "yes",
+        "light_rail": "yes",
+        "name": "Forest Hill",
+        "network": "Muni",
+        "old_name": "Laguna Honda",
+        "operator": "San Francisco Municipal Railway",
+        "public_transport": "station",
+        "railway": "station",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q5468939",
+        "wikipedia": "en:Forest Hill station (Muni Metro)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4591161,
+          37.747987
+        ]
+      },
+      "id": "node/7248421841"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10201633552",
+        "alt_name": "Yerba Buena",
+        "check_date": "2023-01-07",
+        "light_rail": "yes",
+        "name": "Yerba Buena/Moscone",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Transportation Agency",
+        "public_transport": "station",
+        "railway": "station",
+        "start_date": "2022-11-19",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q21016368",
+        "wikipedia": "en:Yerba Buena/Moscone station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401731,
+          37.7822253
+        ]
+      },
+      "id": "node/10201633552"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10201633561",
+        "alt_name": "Union Square",
+        "check_date": "2023-01-07",
+        "level": "-1",
+        "light_rail": "yes",
+        "name": "Union Square/Market Street",
+        "network": "Muni",
+        "operator": "San Francisco Municipal Transportation Agency",
+        "public_transport": "station",
+        "railway": "station",
+        "start_date": "2022-11-19",
+        "station": "light_rail",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40645,
+          37.786846
+        ]
+      },
+      "id": "node/10201633561"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10201633568",
+        "alt_name": "Chinatown",
+        "check_date": "2023-01-07",
+        "light_rail": "yes",
+        "name": "Chinatown-Rose Pak",
+        "name:en": "Chinatown-Rose Pak",
+        "name:zh": "華埠-白蘭站",
+        "network": "Muni",
+        "official_name": "Chinatown-Rose Pak 華埠-白蘭站",
+        "operator": "San Francisco Municipal Transportation Agency",
+        "public_transport": "station",
+        "railway": "station",
+        "start_date": "2022-11-19",
+        "station": "light_rail",
+        "wheelchair": "yes",
+        "wikidata": "Q16957763"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.408071,
+          37.794808
+        ]
+      },
+      "id": "node/10201633568"
+    }
+  ]
+}

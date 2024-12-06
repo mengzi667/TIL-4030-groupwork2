@@ -25,77 +25,98 @@ start_coords = np.vstack([bike_data["start_location_x"], bike_data["start_locati
 end_coords = np.vstack([bike_data["end_location_x"], bike_data["end_location_y"]])      # [lon, lat]
 
 # Step 3: Compute KDE for Start and End Points
-# Define the grid for KDE
+# Define grid resolution and bandwidth
 x_min, x_max = min(start_coords[0].min(), end_coords[0].min()), max(start_coords[0].max(), end_coords[0].max())
 y_min, y_max = min(start_coords[1].min(), end_coords[1].min()), max(start_coords[1].max(), end_coords[1].max())
 
-x_grid = np.linspace(x_min, x_max, 1000)  # 500 grid points for longitude
-y_grid = np.linspace(y_min, y_max, 1000)  # 500 grid points for latitude
-X, Y = np.meshgrid(x_grid, y_grid)       # Create 2D grid
-grid_coords = np.vstack([X.ravel(), Y.ravel()])  # Flatten grid for KDE evaluation
+# Set grid resolution (1000x1000)
+x_grid = np.linspace(x_min, x_max, 1000)
+y_grid = np.linspace(y_min, y_max, 1000)
+X, Y = np.meshgrid(x_grid, y_grid)
+grid_coords = np.vstack([X.ravel(), Y.ravel()])
 
 # KDE for start points
-kde_start = gaussian_kde(start_coords,bw_method=0.03)(grid_coords).reshape(X.shape)  # Reshape to 2D grid
+bandwidth_start = 0.03
+kde_start = gaussian_kde(start_coords, bw_method=bandwidth_start)(grid_coords).reshape(X.shape)
 
 # KDE for end points
-kde_end = gaussian_kde(end_coords,bw_method=0.03)(grid_coords).reshape(X.shape)  # Reshape to 2D grid
+bandwidth_end = 0.03
+kde_end = gaussian_kde(end_coords, bw_method=bandwidth_end)(grid_coords).reshape(X.shape)
 
-# Normalize KDE values for heatmap intensity (0 to 1)
+# Normalize KDE values
 kde_start_norm = (kde_start - kde_start.min()) / (kde_start.max() - kde_start.min())
+kde_start_norm = np.power(kde_start_norm, 0.7)  # Enhance contrast
+
 kde_end_norm = (kde_end - kde_end.min()) / (kde_end.max() - kde_end.min())
+kde_end_norm = np.power(kde_end_norm, 0.7)  # Enhance contrast
 
-# Step 4: Visualize KDE on Folium Maps
-def add_kde_to_map(kde_values, x_grid, y_grid, map_obj):
-    """Overlay KDE results as heatmap on a Folium map."""
-    for i in range(len(x_grid) - 1):
-        for j in range(len(y_grid) - 1):
-            intensity = kde_values[j, i]
-            if intensity > 0:  # Only add cells with positive intensity
-                folium.Rectangle(
-                    bounds=[[y_grid[j], x_grid[i]], [y_grid[j + 1], x_grid[i + 1]]],
-                    color=None,
-                    fill=True,
-                    fill_color=f'rgba(255, 0, 0, {intensity})',  # Red heatmap color
-                    fill_opacity=intensity,  # Transparency based on intensity
-                ).add_to(map_obj)
+# Step 4: Draw Heatmaps Separately
+# Custom color gradient
+gradient = {
+    0.1: 'blue',     # Low density area
+    0.3: 'lime',
+    0.6: 'yellow',
+    1.0: 'red'       # High density area
+}
 
-# Create the map for start points
+# Create heatmap for start points
 m_start = folium.Map(location=[31.23, 121.47], zoom_start=11, tiles="CartoDB positron")
-add_kde_to_map(kde_start_norm, x_grid, y_grid, m_start)
 
-# Add metro station markers
+# Add KDE heatmap for start points
+for i in range(len(x_grid) - 1):
+    for j in range(len(y_grid) - 1):
+        intensity = kde_start_norm[j, i]
+        if intensity > 0:  # Only add non-zero density areas
+            folium.Rectangle(
+                bounds=[[y_grid[j], x_grid[i]], [y_grid[j + 1], x_grid[i + 1]]],
+                color=None,
+                fill=True,
+                fill_color=f'rgba(255, 0, 0, {intensity})',
+                fill_opacity=intensity  # Set opacity based on intensity
+            ).add_to(m_start)
+
+# Add metro station markers to start point map
 for station in metro_stations:
     coordinates = station['coordinates']
     folium.CircleMarker(
         location=[coordinates[1], coordinates[0]],  # GeoJSON uses [lon, lat]
-        radius=2,
+        radius=3,
         color='purple',
         fill=True,
         fill_opacity=0.9,
     ).add_to(m_start)
 
-# Save the start point map
-m_start.save("shanghai_bike_start_kde.html")
+# Save start points map
+m_start.save("shanghai_bike_start_heatmap_kde.html")
+print("Start heatmap saved as 'shanghai_bike_start_heatmap_kde.html'")
 
-# Create the map for end points
+# Create heatmap for end points
 m_end = folium.Map(location=[31.23, 121.47], zoom_start=11, tiles="CartoDB positron")
-add_kde_to_map(kde_end_norm, x_grid, y_grid, m_end)
 
-# Add metro station markers
+# Add KDE heatmap for end points
+for i in range(len(x_grid) - 1):
+    for j in range(len(y_grid) - 1):
+        intensity = kde_end_norm[j, i]
+        if intensity > 0:  # Only add non-zero density areas
+            folium.Rectangle(
+                bounds=[[y_grid[j], x_grid[i]], [y_grid[j + 1], x_grid[i + 1]]],
+                color=None,
+                fill=True,
+                fill_color=f'rgba(255, 0, 0, {intensity})',
+                fill_opacity=intensity  # Set opacity based on intensity
+            ).add_to(m_end)
+
+# Add metro station markers to end point map
 for station in metro_stations:
     coordinates = station['coordinates']
     folium.CircleMarker(
-        location=[coordinates[1], coordinates[0]],
-        radius=2,
+        location=[coordinates[1], coordinates[0]],  # GeoJSON uses [lon, lat]
+        radius=3,
         color='purple',
         fill=True,
         fill_opacity=0.9,
     ).add_to(m_end)
 
-# Save the end point map
-m_end.save("shanghai_bike_end_kde.html")
-
-# Print completion message
-print("Maps with KDE heatmaps have been saved:")
-print("- Start point map: shanghai_bike_start_kde.html")
-print("- End point map: shanghai_bike_end_kde.html")
+# Save end points map
+m_end.save("shanghai_bike_end_heatmap_kde.html")
+print("End heatmap saved as 'shanghai_bike_end_heatmap_kde.html'")
