@@ -33,6 +33,10 @@ end_counts = end_join.groupby(end_join.index).size()
 grid_gdf['start_count'] = grid_gdf.index.map(start_counts).fillna(0).astype(int)
 grid_gdf['end_count'] = grid_gdf.index.map(end_counts).fillna(0).astype(int)
 
+# Drop rows where all columns except 'geometry', 'start_count', and 'end_count' are zero
+cols_to_check = grid_gdf.columns.difference(['geometry', 'start_count', 'end_count'])
+grid_gdf = grid_gdf[~(grid_gdf[cols_to_check] == 0).all(axis=1).values]
+
 # Save as a new CSV file
 output_path = 'data/Shanghai/grid_with_bike_counts.csv'
 grid_gdf.to_csv(output_path, index=False)
