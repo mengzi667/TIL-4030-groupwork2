@@ -98,10 +98,14 @@ station_names = [result['station_name'] for result in results]
 percentile_90_distances = [result['percentile_90_distance'] for result in results]
 
 plt.figure(figsize=(12, 8))
-plt.bar(station_names, percentile_90_distances, color='skyblue')
+plt.bar(range(1, len(station_names) + 1), percentile_90_distances, color='skyblue')
 plt.ylabel('90th Percentile Distance (km)')
-plt.xlabel('Metro Station')
-plt.title('90th Percentile Distance for Each Metro Station')
-plt.xticks(rotation=45, ha='right')
+plt.xlabel('Metro Station Index')
+plt.title('D_value for Shanghai railwaystation')
+
+# Reduce the number of x-ticks for better readability
+step = max(1, len(station_names) // 10)
+plt.xticks(range(1, len(station_names) + 1, step), range(1, len(station_names) + 1, step), rotation=45, ha='right')
+
 plt.tight_layout()
 plt.show()

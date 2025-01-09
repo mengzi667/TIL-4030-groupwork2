@@ -97,20 +97,15 @@ station_names = [result['station_name'] for result in results]
 percentile_90_distances = [result['percentile_90_distance'] for result in results]
 
 plt.figure(figsize=(14, 8))
-bars = plt.barh(station_names, percentile_90_distances, color='skyblue', edgecolor='black')
+bars = plt.bar(station_names, percentile_90_distances, color='skyblue', edgecolor='black')
 
-# Add labels to each bar
-for bar in bars:
-    plt.text(bar.get_width(), bar.get_y() + bar.get_height()/2, f'{bar.get_width():.2f} km', 
-             va='center', ha='left', fontsize=10, color='black')
+plt.ylabel('90th Percentile Distance (km)', fontsize=14)
+plt.xlabel('Metro Stations', fontsize=14)
+plt.title('D-value for SanFrancisco railwaystations', fontsize=16, fontweight='bold')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
 
-plt.xlabel('90th Percentile Distance (km)', fontsize=14)
-plt.ylabel('Metro Stations', fontsize=14)
-plt.title('90th Percentile Distance for Each Metro Station', fontsize=16, fontweight='bold')
-plt.grid(axis='x', linestyle='--', alpha=0.7)
-
-# Adjust y-axis to avoid overlapping labels
-plt.yticks(fontsize=10, rotation=45, ha='right')
+# Adjust x-axis to avoid overlapping labels
+plt.xticks(fontsize=10, rotation=45, ha='right')
 
 plt.tight_layout()
 plt.show()
