@@ -53,7 +53,7 @@ distances = haversine_distance(filtered_data["start_location_y"], filtered_data[
                                filtered_data["end_location_y"], filtered_data["end_location_x"])
 
 # Add distances to DataFrame
-filtered_data["distance_km"] = distances
+filtered_data.loc[:, "distance_km"] = distances
 
 # Define function to check if a point is within 150 meters of a station
 def is_within_150m(lat1, lon1, lat2, lon2):
@@ -74,7 +74,10 @@ for station in metro_stations:
     
     # Calculate average distance and 90th percentile distance for these trips
     avg_distance = nearby_trips["distance_km"].mean()
-    percentile_90_distance = nearby_trips["distance_km"].mean() * 0.9
+    if not nearby_trips.empty:
+        percentile_90_distance = np.percentile(nearby_trips["distance_km"], 90)
+    else:
+        percentile_90_distance = np.nan
     
     # Append results
     results.append({
@@ -83,20 +86,22 @@ for station in metro_stations:
         'percentile_90_distance': percentile_90_distance
     })
 
-# Print results
-for result in results:
-    print(f"Station: {result['station_name']}")
-    print(f"Average Distance: {result['average_distance']} km")
-    print(f"90th Percentile Distance: {result['percentile_90_distance']} km")
-    print()
+# # Print results
+# for result in results:
+#     print(f"Station: {result['station_name']}")
+#     print(f"Average Distance: {result['average_distance']} km")
+#     print(f"90th Percentile Distance: {result['percentile_90_distance']} km")
+#     print()
 
 # Plot 90th percentile distances as a bar chart
 station_names = [result['station_name'] for result in results]
 percentile_90_distances = [result['percentile_90_distance'] for result in results]
 
-plt.figure(figsize=(12, 6))
-plt.barh(station_names, percentile_90_distances, color='skyblue')
-plt.xlabel('90th Percentile Distance (km)')
+plt.figure(figsize=(12, 8))
+plt.bar(station_names, percentile_90_distances, color='skyblue')
+plt.ylabel('90th Percentile Distance (km)')
+plt.xlabel('Metro Station')
 plt.title('90th Percentile Distance for Each Metro Station')
+plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()

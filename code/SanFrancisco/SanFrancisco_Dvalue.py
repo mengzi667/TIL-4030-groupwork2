@@ -52,7 +52,7 @@ distances = haversine_distance(filtered_data["start_lat"], filtered_data["start_
                                filtered_data["end_lat"], filtered_data["end_lng"])
 
 # Add distances to DataFrame
-filtered_data["distance_km"] = distances
+filtered_data.loc[:, "distance_km"] = distances
 
 # Define function to check if a point is within 150 meters of a station
 def is_within_150m(lat1, lon1, lat2, lon2):
@@ -73,7 +73,10 @@ for station in metro_stations:
     
     # Calculate average distance and 90th percentile distance for these trips
     avg_distance = nearby_trips["distance_km"].mean()
-    percentile_90_distance = nearby_trips["distance_km"].mean() * 0.9
+    if not nearby_trips.empty:
+        percentile_90_distance = np.percentile(nearby_trips["distance_km"], 90)
+    else:
+        percentile_90_distance = np.nan
     
     # Append results
     results.append({
@@ -89,13 +92,25 @@ for result in results:
     print(f"90th Percentile Distance: {result['percentile_90_distance']} km")
     print()
 
-# Plot 90th percentile distances as a bar chart
+# Plot 90th percentile distances as a bar chart with enhanced aesthetics
 station_names = [result['station_name'] for result in results]
 percentile_90_distances = [result['percentile_90_distance'] for result in results]
 
-plt.figure(figsize=(12, 6))
-plt.barh(station_names, percentile_90_distances, color='skyblue')
-plt.xlabel('90th Percentile Distance (km)')
-plt.title('90th Percentile Distance for Each Metro Station')
+plt.figure(figsize=(14, 8))
+bars = plt.barh(station_names, percentile_90_distances, color='skyblue', edgecolor='black')
+
+# Add labels to each bar
+for bar in bars:
+    plt.text(bar.get_width(), bar.get_y() + bar.get_height()/2, f'{bar.get_width():.2f} km', 
+             va='center', ha='left', fontsize=10, color='black')
+
+plt.xlabel('90th Percentile Distance (km)', fontsize=14)
+plt.ylabel('Metro Stations', fontsize=14)
+plt.title('90th Percentile Distance for Each Metro Station', fontsize=16, fontweight='bold')
+plt.grid(axis='x', linestyle='--', alpha=0.7)
+
+# Adjust y-axis to avoid overlapping labels
+plt.yticks(fontsize=10, rotation=45, ha='right')
+
 plt.tight_layout()
 plt.show()
