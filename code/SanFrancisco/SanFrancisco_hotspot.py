@@ -34,21 +34,17 @@ filtered_data = bike_data[
 start_coords = filtered_data[["start_lat", "start_lng"]].values.tolist()
 end_coords = filtered_data[["end_lat", "end_lng"]].values.tolist()
 
-# Calculate density per square kilometer
-sf_area_km2 = 121.4  # Area of San Francisco in square kilometers
-start_density_per_km2 = len(start_coords) / sf_area_km2
-end_density_per_km2 = len(end_coords) / sf_area_km2
-
 # Dynamic classification legend for start points
 start_legend_html = f'''
 <div style="position: fixed; 
-            bottom: 50px; left: 50px; width: 150px; height: 150px; 
+            bottom: 50px; left: 50px; width: 150px; height: 120px; 
             background-color: white; z-index:9999; font-size:14px;
             border:2px solid grey; padding: 10px;">
     <b>Legend (Start Density)</b><br>
-    <i style="background: #ff0000; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> > {start_density_per_km2:.2f}<br>
-    <i style="background: #ffff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> {start_density_per_km2/2:.2f} - {start_density_per_km2:.2f}<br>
-    <i style="background: #00ff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> 0 - {start_density_per_km2/2:.2f}<br>
+    <div style="background: linear-gradient(to right, #00ff00, #ffff00, #ff0000); height: 18px; margin-bottom: 8px;"></div>
+    <span style="float: left;">0</span>
+    <span style="float: right;">1</span>
+    <br style="clear: both;">
     <i style="border: 2px solid blue; width: 12px; height: 12px; border-radius: 50%; float: left; margin-right: 8px;"></i> Metro Station<br>
 </div>
 '''
@@ -56,13 +52,14 @@ start_legend_html = f'''
 # Dynamic classification legend for end points
 end_legend_html = f'''
 <div style="position: fixed; 
-            bottom: 50px; left: 50px; width: 150px; height: 150px; 
+            bottom: 50px; left: 50px; width: 150px; height: 120px; 
             background-color: white; z-index:9999; font-size:14px;
             border:2px solid grey; padding: 10px;">
     <b>Legend (End Density)</b><br>
-    <i style="background: #ff0000; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> > {end_density_per_km2:.2f}<br>
-    <i style="background: #ffff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> {end_density_per_km2/2:.2f} - {end_density_per_km2:.2f}<br>
-    <i style="background: #00ff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> 0 - {end_density_per_km2/2:.2f}<br>
+    <div style="background: linear-gradient(to right, #00ff00, #ffff00, #ff0000); height: 18px; margin-bottom: 8px;"></div>
+    <span style="float: left;">0</span>
+    <span style="float: right;">1</span>
+    <br style="clear: both;">
     <i style="border: 2px solid blue; width: 12px; height: 12px; border-radius: 50%; float: left; margin-right: 8px;"></i> Metro Station<br>
 </div>
 '''
