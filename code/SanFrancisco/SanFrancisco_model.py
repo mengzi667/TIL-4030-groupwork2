@@ -64,41 +64,51 @@ for name, result in results.items():
     print(f"  start_count - MSE: {result['start_count']['MSE']}, R2: {result['start_count']['R2']}")
     print(f"  end_count - MSE: {result['end_count']['MSE']}, R2: {result['end_count']['R2']}")
 
-# 绘制拟合图（以 Gradient Boosting 为例）
-best_model = GradientBoostingRegressor(random_state=42)
-best_model.fit(X_train_start, y_train_start)
-y_pred_start = best_model.predict(X_test_start)
+# 绘制所有模型的拟合图
+for name, model in models.items():
+    # 拟合图（start_count）
+    model.fit(X_train_start, y_train_start)
+    y_pred_start = model.predict(X_test_start)
 
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test_start, y_pred_start, alpha=0.6, label='Predicted vs Actual')
-plt.plot([y_test_start.min(), y_test_start.max()], [y_test_start.min(), y_test_start.max()], 'r--', label='Ideal Fit')
-plt.xlabel('Actual start_count')
-plt.ylabel('Predicted start_count')
-plt.title('Gradient Boosting: Actual vs Predicted (start_count)')
-plt.legend()
-plt.grid(True)
-plt.show()
+    plt.figure(figsize=(12, 6))
+    plt.scatter(y_test_start, y_pred_start, alpha=0.6, label='Predicted vs Actual')
+    plt.plot([y_test_start.min(), y_test_start.max()], [y_test_start.min(), y_test_start.max()], 'r--', label='Ideal Fit')
+    plt.xlabel('Actual start_count')
+    plt.ylabel('Predicted start_count')
+    plt.title(f'{name}: Actual vs Predicted (start_count)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
-best_model.fit(X_train_end, y_train_end)
-y_pred_end = best_model.predict(X_test_end)
+    # 拟合图（end_count）
+    model.fit(X_train_end, y_train_end)
+    y_pred_end = model.predict(X_test_end)
 
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test_end, y_pred_end, alpha=0.6, label='Predicted vs Actual')
-plt.plot([y_test_end.min(), y_test_end.max()], [y_test_end.min(), y_test_end.max()], 'r--', label='Ideal Fit')
-plt.xlabel('Actual end_count')
-plt.ylabel('Predicted end_count')
-plt.title('Gradient Boosting: Actual vs Predicted (end_count)')
-plt.legend()
-plt.grid(True)
-plt.show()
+    plt.figure(figsize=(12, 6))
+    plt.scatter(y_test_end, y_pred_end, alpha=0.6, label='Predicted vs Actual')
+    plt.plot([y_test_end.min(), y_test_end.max()], [y_test_end.min(), y_test_end.max()], 'r--', label='Ideal Fit')
+    plt.xlabel('Actual end_count')
+    plt.ylabel('Predicted end_count')
+    plt.title(f'{name}: Actual vs Predicted (end_count)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
-# 进行敏感性分析，展示各要素重要程度
-feature_importances = best_model.feature_importances_
-features = X.columns
+# 确定最优模型（以 R2 分数为准）
+best_model_name = max(results, key=lambda name: results[name]['start_count']['R2'] + results[name]['end_count']['R2'])
+best_model = models[best_model_name]
 
-# 绘制特征重要性图
-plt.figure(figsize=(12, 6))
-plt.barh(features, feature_importances, align='center')
-plt.xlabel('Feature Importance')
-plt.title('Feature Importance in Gradient Boosting Model')
-plt.show()
+# 进行敏感性分析，展示各要素重要程度（仅适用于树模型）
+if hasattr(best_model, 'feature_importances_'):
+    best_model.fit(X_train_start, y_train_start)  # 重新训练最优模型
+    feature_importances = best_model.feature_importances_
+    features = X.columns
+
+    # 绘制特征重要性图
+    plt.figure(figsize=(12, 6))
+    plt.barh(features, feature_importances, align='center')
+    plt.xlabel('Feature Importance')
+    plt.title(f'Feature Importance in {best_model_name}')
+    plt.show()
+else:
+    print(f"The best model ({best_model_name}) does not support feature importances.")
