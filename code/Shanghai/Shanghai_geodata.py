@@ -100,16 +100,59 @@ import pandas as pd
 #         lambda cell: landuse_gdf[(landuse_gdf['landuse'] == landuse_type) & (landuse_gdf.intersects(cell))].intersection(cell).area.sum()
 #     )
 
-# 统计每个网格内的铁路车站数量
-grid['railway_station_count'] = grid.geometry.apply(
-    lambda cell: railway_gdf[railway_gdf.intersects(cell)].shape[0]
+# # 统计每个网格内的铁路车站数量
+# grid['railway_station_count'] = grid.geometry.apply(
+#     lambda cell: railway_gdf[railway_gdf.intersects(cell)].shape[0]
+# )
+
+# # 将结果转换回地理坐标系 (WGS84) 以便保存为 CSV 文件
+# grid = grid.to_crs(epsg=4326)
+# grid.to_csv('data/Shanghai/grid_with_counts_railwaystation.csv', index=False)
+# print("Grid with railwaystation areas saved to 'data/Shanghai/grid_with_counts_railwaystation.csv'")
+
+
+# # 读取现有的 CSV 文件
+# existing_grid_df = pd.read_csv('data/Shanghai/grid_with_counts.csv')
+
+# # 确保现有的 DataFrame 和新的 DataFrame 有相同的索引
+# existing_grid_df.index = grid.index
+
+# # 合并新的 landuse 数据
+# grid_df = pd.DataFrame(grid.drop(columns='geometry'))
+# merged_df = pd.concat([existing_grid_df, grid_df], axis=1)
+
+# # 保存结果为新的 CSV 文件
+# merged_df.to_csv('data/Shanghai/grid_with_counts.csv', index=False)
+
+# print("Updated grid with railwaystation areas saved to 'data/Shanghai/grid_with_counts.csv'")
+
+# 加载 bicycle lane 和 bus GeoJSON 文件
+bicyclelane_geojson_file = 'data/Shanghai/bicyclelane.geojson'
+bus_geojson_file = 'data/Shanghai/bus.geojson'
+
+bicyclelane_gdf = gpd.read_file(bicyclelane_geojson_file)
+bus_gdf = gpd.read_file(bus_geojson_file)
+
+# 确保 GeoDataFrame 有有效的投影
+for gdf in [bicyclelane_gdf, bus_gdf]:
+    if gdf.crs is None:
+        gdf.set_crs(epsg=4326, inplace=True)  # 假设你的数据是 WGS84 坐标系
+    gdf.to_crs(epsg=3857, inplace=True)  # 转换为以米为单位的投影坐标系
+
+# 统计每个网格内的自行车道长度
+grid['bicycle_lane_length'] = grid.geometry.apply(
+    lambda cell: bicyclelane_gdf[bicyclelane_gdf.intersects(cell)].length.sum()
+)
+
+# 统计每个网格内的公交车站数量
+grid['bus_station_count'] = grid.geometry.apply(
+    lambda cell: bus_gdf[bus_gdf.intersects(cell)].shape[0]
 )
 
 # 将结果转换回地理坐标系 (WGS84) 以便保存为 CSV 文件
 grid = grid.to_crs(epsg=4326)
-grid.to_csv('data/Shanghai/grid_with_counts_railwaystation.csv', index=False)
-print("Grid with railwaystation areas saved to 'data/Shanghai/grid_with_counts_railwaystation.csv'")
-
+grid.to_csv('data/Shanghai/grid_with_counts_bicyclelane_busstation.csv', index=False)
+print("Grid with bicycle lane lengths and bus station counts saved to 'data/Shanghai/grid_with_counts_bicyclelane_busstation.csv'")
 
 # 读取现有的 CSV 文件
 existing_grid_df = pd.read_csv('data/Shanghai/grid_with_counts.csv')
@@ -117,11 +160,11 @@ existing_grid_df = pd.read_csv('data/Shanghai/grid_with_counts.csv')
 # 确保现有的 DataFrame 和新的 DataFrame 有相同的索引
 existing_grid_df.index = grid.index
 
-# 合并新的 landuse 数据
-grid_df = pd.DataFrame(grid.drop(columns='geometry'))
-merged_df = pd.concat([existing_grid_df, grid_df], axis=1)
+# 合并新的 bicycle lane 和 bus station 数据
+bicycle_lane_bus_station_df = grid[['bicycle_lane_length', 'bus_station_count']]
+merged_df = pd.concat([existing_grid_df, bicycle_lane_bus_station_df], axis=1)
 
 # 保存结果为新的 CSV 文件
 merged_df.to_csv('data/Shanghai/grid_with_counts.csv', index=False)
 
-print("Updated grid with railwaystation areas saved to 'data/Shanghai/grid_with_counts.csv'")
+print("Updated grid with bicycle lane lengths and bus station counts saved to 'data/Shanghai/grid_with_counts.csv'")
