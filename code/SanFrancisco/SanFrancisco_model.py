@@ -5,6 +5,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 # 读取数据
 data = pd.read_csv('data/SanFrancisco/grid_with_bike_counts.csv')
@@ -19,6 +20,13 @@ X_train_start, X_test_start, y_train_start, y_test_start = train_test_split(X, y
 
 # 将数据分为训练集和测试集（针对 end_count）
 X_train_end, X_test_end, y_train_end, y_test_end = train_test_split(X, y_end, test_size=0.2, random_state=42)
+
+# 标准化数据
+scaler = StandardScaler()
+X_train_start = scaler.fit_transform(X_train_start)
+X_test_start = scaler.transform(X_test_start)
+X_train_end = scaler.fit_transform(X_train_end)
+X_test_end = scaler.transform(X_test_end)
 
 # 定义模型
 models = {
@@ -82,4 +90,15 @@ plt.ylabel('Predicted end_count')
 plt.title('Gradient Boosting: Actual vs Predicted (end_count)')
 plt.legend()
 plt.grid(True)
+plt.show()
+
+# 进行敏感性分析，展示各要素重要程度
+feature_importances = best_model.feature_importances_
+features = X.columns
+
+# 绘制特征重要性图
+plt.figure(figsize=(12, 6))
+plt.barh(features, feature_importances, align='center')
+plt.xlabel('Feature Importance')
+plt.title('Feature Importance in Gradient Boosting Model')
 plt.show()
