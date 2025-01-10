@@ -23,9 +23,8 @@ X_train_end, X_test_end, y_train_end, y_test_end = train_test_split(X, y_end, te
 # 定义模型
 models = {
     "Linear Regression": LinearRegression(),
-    "Decision Tree": DecisionTreeRegressor(random_state=42),
     "Random Forest": RandomForestRegressor(random_state=42),
-    "Gradient Boosting": GradientBoostingRegressor(random_state=42)
+    "Gradient Boosting": GradientBoostingRegressor(random_state=42),
 }
 
 # 训练和评估模型
@@ -56,7 +55,7 @@ for name, result in results.items():
     print(f"  start_count - MSE: {result['start_count']['MSE']}, R2: {result['start_count']['R2']}")
     print(f"  end_count - MSE: {result['end_count']['MSE']}, R2: {result['end_count']['R2']}")
 
-# 绘制拟合图（以 Gradient Boosting 为例）
+# 使用梯度提升模型进行预测和绘图
 best_model = GradientBoostingRegressor(random_state=42)
 best_model.fit(X_train_start, y_train_start)
 y_pred_start = best_model.predict(X_test_start)
@@ -82,4 +81,15 @@ plt.ylabel('Predicted end_count')
 plt.title('Gradient Boosting: Actual vs Predicted (end_count)')
 plt.legend()
 plt.grid(True)
+plt.show()
+
+# 进行敏感性分析，展示各要素重要程度
+feature_importances = best_model.feature_importances_
+features = X.columns
+
+# 绘制特征重要性图
+plt.figure(figsize=(12, 6))
+plt.barh(features, feature_importances, align='center')
+plt.xlabel('Feature Importance')
+plt.title('Feature Importance in Gradient Boosting Model')
 plt.show()
