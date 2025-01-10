@@ -1,16 +1,14 @@
 import folium
 from folium.plugins import HeatMap
-from scipy.stats import gaussian_kde
-import numpy as np
 import pandas as pd
 import json
+import numpy as np
 
 # Step 1: Load metro station data from GeoJSON
-geojson_path = 'TIL-4030-groupwork2/data/Shanghai/Shanghai_railwaystation.geojson'
+geojson_path = 'data/Shanghai/Shanghai_railwaystation.geojson'
 with open(geojson_path, 'r') as f:
     metro_data = json.load(f)
 
-# Extract metro station coordinates and names
 metro_stations = []
 for feature in metro_data['features']:
     coordinates = feature['geometry']['coordinates']
@@ -18,88 +16,96 @@ for feature in metro_data['features']:
     metro_stations.append({'name': name, 'coordinates': coordinates})
 
 # Step 2: Load bike-sharing data
-file_path = 'TIL-4030-groupwork2/data/Shanghai/mobike_shanghai_sample_updated.csv'
+file_path = 'data/Shanghai/mobike_shanghai_sample_updated.csv'
 bike_data = pd.read_csv(file_path)
 
-# Extract start and end coordinate
-start_coords = np.vstack([bike_data["start_location_x"], bike_data["start_location_y"]])
-end_coords = np.vstack([bike_data["end_location_x"], bike_data["end_location_y"]])
+# Extract start and end coordinates
+start_coords = bike_data[["start_location_y", "start_location_x"]].values.tolist()
+end_coords = bike_data[["end_location_y", "end_location_x"]].values.tolist()
 
-# Step 3: Kernel Density Estimation (KDE) for start and end points
-# KDE for start points
-kde_start = gaussian_kde(start_coords)
-x_min, x_max = start_coords[0].min(), start_coords[0].max()
-y_min, y_max = start_coords[1].min(), start_coords[1].max()
-x, y = np.linspace(x_min, x_max, 500), np.linspace(y_min, y_max, 500)
-X_start, Y_start = np.meshgrid(x, y)
-positions_start = np.vstack([X_start.ravel(), Y_start.ravel()])
-density_start = kde_start(positions_start).reshape(X_start.shape)
+print(len(start_coords))
+print(len(end_coords))
 
-# KDE for end points
-kde_end = gaussian_kde(end_coords)
-x_min, x_max = end_coords[0].min(), end_coords[0].max()
-y_min, y_max = end_coords[1].min(), end_coords[1].max()
-x, y = np.linspace(x_min, x_max, 500), np.linspace(y_min, y_max, 500)
-X_end, Y_end = np.meshgrid(x, y)
-positions_end = np.vstack([X_end.ravel(), Y_end.ravel()])
-density_end = kde_end(positions_end).reshape(X_end.shape)
+# Calculate density per square kilometer
+shanghai_area_km2 = 5396.74  # Area of Shanghai in square kilometers
+start_density_per_km2 = len(start_coords) / shanghai_area_km2
+end_density_per_km2 = len(end_coords) / shanghai_area_km2
 
-# Convert densities to heatmap data format
-heat_data_start = np.vstack([X_start.ravel(), Y_start.ravel(), density_start.ravel()]).T
-heat_data_start = heat_data_start[heat_data_start[:, 2] > 0]  # Filter low-density values
+print(shanghai_area_km2)
+print(start_density_per_km2)
+print(end_density_per_km2)
 
-heat_data_end = np.vstack([X_end.ravel(), Y_end.ravel(), density_end.ravel()]).T
-heat_data_end = heat_data_end[heat_data_end[:, 2] > 0]  # Filter low-density values
+# Dynamic classification legend for start points
+start_legend_html = f'''
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 150px; height: 140px; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+    <b>Legend (Start Density)</b><br>
+    <i style="background: #ff0000; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> > {start_density_per_km2:.2f}<br>
+    <i style="background: #ffff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> {start_density_per_km2/2:.2f} - {start_density_per_km2:.2f}<br>
+    <i style="background: #00ff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> 0 - {start_density_per_km2/2:.2f}<br>
+    <i style="border: 2px solid blue; width: 12px; height: 12px; border-radius: 50%; float: left; margin-right: 8px;"></i> Metro Station<br>
+</div>
+'''
 
-# Step 4: Create two interactive maps
-# Map for start points
+# Dynamic classification legend for end points
+end_legend_html = f'''
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 150px; height: 140px; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+    <b>Legend (End Density)</b><br>
+    <i style="background: #ff0000; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> > {end_density_per_km2:.2f}<br>
+    <i style="background: #ffff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> {end_density_per_km2/2:.2f} - {end_density_per_km2:.2f}<br>
+    <i style="background: #00ff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> 0 - {end_density_per_km2/2:.2f}<br>
+    <i style="border: 2px solid blue; width: 12px; height: 12px; border-radius: 50%; float: left; margin-right: 8px;"></i> Metro Station<br>
+</div>
+'''
+
+# Step 3: Create two maps
 m_start = folium.Map(location=[31.23, 121.47], zoom_start=11, tiles="OpenStreetMap")
 HeatMap(
-    data=[[p[1], p[0], p[2]] for p in heat_data_start],
+    data=start_coords,
     max_zoom=16,
-    radius=15,
+    radius=20,  # radius is in pixels
+    useGeoUnit=True,
+    gradient=None  # Default gradient
 ).add_to(m_start)
 
-# Add metro station markers to the start point map
 for station in metro_stations:
-    coordinates = station['coordinates']
-    name = station['name']
     folium.CircleMarker(
-        location=[coordinates[1], coordinates[0]],  # GeoJSON uses [longitude, latitude]
-        radius=5,
+        location=[station['coordinates'][1], station['coordinates'][0]],
+        radius=4,
         color='blue',
         fill=True,
         fill_color='blue',
-        popup=name,
+        popup=station['name'],
     ).add_to(m_start)
 
-# Save start point heatmap
+m_start.get_root().html.add_child(folium.Element(start_legend_html))
 m_start.save("shanghai_bike_start_heatmap.html")
 
-# Map for end points
 m_end = folium.Map(location=[31.23, 121.47], zoom_start=11, tiles="OpenStreetMap")
 HeatMap(
-    data=[[p[1], p[0], p[2]] for p in heat_data_end],
+    data=end_coords,
     max_zoom=16,
-    radius=15,
+    radius=20,
 ).add_to(m_end)
 
-# Add metro station markers to the end point map
 for station in metro_stations:
-    coordinates = station['coordinates']
-    name = station['name']
     folium.CircleMarker(
-        location=[coordinates[1], coordinates[0]],
-        radius=5,
+        location=[station['coordinates'][1], station['coordinates'][0]],
+        radius=4,
         color='blue',
         fill=True,
         fill_color='blue',
-        popup=name,
+        popup=station['name'],
     ).add_to(m_end)
 
-# Save end point heatmap
+m_end.get_root().html.add_child(folium.Element(end_legend_html))
 m_end.save("shanghai_bike_end_heatmap.html")
 
-print("The heatmaps for start and end points have been saved as HTML files:")
-print("- Start point heatmap: shanghai_bike_start_heatmap.html")
-print("- End point heatmap: shanghai_bike_end_heatmap.html")
+print("The heatmaps for start and end points have been saved:")
+print("- shanghai_bike_start_heatmap.html")
+print("- shanghai_bike_end_heatmap.html")

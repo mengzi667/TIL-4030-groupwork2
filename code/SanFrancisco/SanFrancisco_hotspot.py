@@ -4,7 +4,7 @@ import pandas as pd
 import json
 
 # Step 1: Load metro station data from GeoJSON
-geojson_path = 'TIL-4030-groupwork2/data/SanFrancisco/SanFrancisco_railwaystation.geojson' 
+geojson_path = 'data/SanFrancisco/SanFrancisco_railwaystation.geojson'
 with open(geojson_path, 'r') as f:
     metro_data = json.load(f)
 
@@ -16,7 +16,7 @@ for feature in metro_data['features']:
     metro_stations.append({'name': name, 'coordinates': coordinates})
 
 # Step 2: Load bike-sharing data
-file_path = 'TIL-4030-groupwork2/data/SanFrancisco/202008-baywheels-tripdata.csv' 
+file_path = 'data/SanFrancisco/202008-baywheels-tripdata.csv'
 bike_data = pd.read_csv(file_path)
 
 # Step 3: Filter data within the bounding box
@@ -34,61 +34,80 @@ filtered_data = bike_data[
 start_coords = filtered_data[["start_lat", "start_lng"]].values.tolist()
 end_coords = filtered_data[["end_lat", "end_lng"]].values.tolist()
 
-# Step 4: Create two interactive maps
-# Map for start points
-m_start = folium.Map(location=[37.7749, -122.4194], zoom_start=13, tiles="OpenStreetMap")
+# Calculate density per square kilometer
+sf_area_km2 = 121.4  # Area of San Francisco in square kilometers
+start_density_per_km2 = len(start_coords) / sf_area_km2
+end_density_per_km2 = len(end_coords) / sf_area_km2
 
-# Add heatmap for start points
+# Dynamic classification legend for start points
+start_legend_html = f'''
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 150px; height: 150px; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+    <b>Legend (Start Density)</b><br>
+    <i style="background: #ff0000; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> > {start_density_per_km2:.2f}<br>
+    <i style="background: #ffff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> {start_density_per_km2/2:.2f} - {start_density_per_km2:.2f}<br>
+    <i style="background: #00ff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> 0 - {start_density_per_km2/2:.2f}<br>
+    <i style="border: 2px solid blue; width: 12px; height: 12px; border-radius: 50%; float: left; margin-right: 8px;"></i> Metro Station<br>
+</div>
+'''
+
+# Dynamic classification legend for end points
+end_legend_html = f'''
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 150px; height: 150px; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+    <b>Legend (End Density)</b><br>
+    <i style="background: #ff0000; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> > {end_density_per_km2:.2f}<br>
+    <i style="background: #ffff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> {end_density_per_km2/2:.2f} - {end_density_per_km2:.2f}<br>
+    <i style="background: #00ff00; width: 18px; height: 18px; float: left; margin-right: 8px;"></i> 0 - {end_density_per_km2/2:.2f}<br>
+    <i style="border: 2px solid blue; width: 12px; height: 12px; border-radius: 50%; float: left; margin-right: 8px;"></i> Metro Station<br>
+</div>
+'''
+
+# Step 4: Create two maps
+m_start = folium.Map(location=[37.7749, -122.4194], zoom_start=13, tiles="OpenStreetMap")
 HeatMap(
     data=start_coords,
     max_zoom=16,
     radius=15,
 ).add_to(m_start)
 
-# Add metro station markers (as CircleMarker) to the start point map
 for station in metro_stations:
-    coordinates = station['coordinates']
-    name = station['name']
     folium.CircleMarker(
-        location=[coordinates[1], coordinates[0]],  # GeoJSON uses [longitude, latitude]
-        radius=5,  # Circle radius
-        color='purple',
+        location=[station['coordinates'][1], station['coordinates'][0]],
+        radius=5,
+        color='blue',
         fill=True,
-        fill_color='purple',
-        fill_opacity=0.8,
-        popup=name
+        fill_color='blue',
+        popup=station['name'],
     ).add_to(m_start)
 
-# Save start point heatmap
+m_start.get_root().html.add_child(folium.Element(start_legend_html))
 m_start.save("sf_bike_start_heatmap.html")
 
-# Map for end points
 m_end = folium.Map(location=[37.7749, -122.4194], zoom_start=13, tiles="OpenStreetMap")
-
-# Add heatmap for end points
 HeatMap(
     data=end_coords,
     max_zoom=16,
     radius=15,
 ).add_to(m_end)
 
-# Add metro station markers (as CircleMarker) to the end point map
 for station in metro_stations:
-    coordinates = station['coordinates']
-    name = station['name']
     folium.CircleMarker(
-        location=[coordinates[1], coordinates[0]],  # GeoJSON uses [longitude, latitude]
-        radius=5,  # Circle radius
-        color='purple',
+        location=[station['coordinates'][1], station['coordinates'][0]],
+        radius=5,
+        color='blue',
         fill=True,
-        fill_color='purple',
-        fill_opacity=0.8,
-        popup=name
+        fill_color='blue',
+        popup=station['name'],
     ).add_to(m_end)
 
-# Save end point heatmap
+m_end.get_root().html.add_child(folium.Element(end_legend_html))
 m_end.save("sf_bike_end_heatmap.html")
 
-print("The heatmaps for start and end points have been saved as HTML files:")
-print("- Start point heatmap: sf_bike_start_heatmap.html")
-print("- End point heatmap: sf_bike_end_heatmap.html")
+print("The heatmaps for start and end points have been saved:")
+print("- sf_bike_start_heatmap.html")
+print("- sf_bike_end_heatmap.html")
