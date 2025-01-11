@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
@@ -82,41 +83,19 @@ for name, result in results.items():
     print(f"  start_count - MSE: {result['start_count']['MSE']}, R2: {result['start_count']['R2']}")
     print(f"  end_count - MSE: {result['end_count']['MSE']}, R2: {result['end_count']['R2']}")
 
-# 使用梯度提升模型进行预测和绘图
-best_model = GradientBoostingRegressor(random_state=42)
-best_model.fit(X_train_start, y_train_start)
-y_pred_start = best_model.predict(X_test_start)
-
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test_start, y_pred_start, alpha=0.6, label='Predicted vs Actual')
-plt.plot([y_test_start.min(), y_test_start.max()], [y_test_start.min(), y_test_start.max()], 'r--', label='Ideal Fit')
-plt.xlabel('Actual start_count')
-plt.ylabel('Predicted start_count')
-plt.title('Gradient Boosting: Actual vs Predicted (start_count)')
-plt.legend()
-plt.grid(True)
-plt.show()
-
-best_model.fit(X_train_end, y_train_end)
-y_pred_end = best_model.predict(X_test_end)
-
-plt.figure(figsize=(12, 6))
-plt.scatter(y_test_end, y_pred_end, alpha=0.6, label='Predicted vs Actual')
-plt.plot([y_test_end.min(), y_test_end.max()], [y_test_end.min(), y_test_end.max()], 'r--', label='Ideal Fit')
-plt.xlabel('Actual end_count')
-plt.ylabel('Predicted end_count')
-plt.title('Gradient Boosting: Actual vs Predicted (end_count)')
-plt.legend()
-plt.grid(True)
-plt.show()
-
-# 进行敏感性分析，展示各要素重要程度
-feature_importances = best_model.feature_importances_
-features = X.columns
+# 打印线性回归模型的方程
+linear_model = models["Linear Regression"]
+print("Linear Regression Model Equation (start_count):")
+print(f"Intercept: {linear_model.intercept_}")
+print("Coefficients:")
+for feature, coef in zip(X.columns, linear_model.coef_):
+    print(f"{feature}: {coef}")
 
 # 绘制特征重要性图
-plt.figure(figsize=(12, 6))
-plt.barh(features, feature_importances, align='center')
-plt.xlabel('Feature Importance')
-plt.title('Feature Importance in Gradient Boosting Model')
-plt.show()
+for name, importances in feature_importances_dict.items():
+    features = X.columns
+    plt.figure(figsize=(12, 6))
+    plt.barh(features, importances, align='center')
+    plt.xlabel('Feature Importance')
+    plt.title(f'Feature Importance in {name} Model')
+    plt.show()
